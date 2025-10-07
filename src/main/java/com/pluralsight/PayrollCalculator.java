@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class PayrollCalculator {
 
@@ -22,7 +19,7 @@ public class PayrollCalculator {
                 double hours = Double.parseDouble(tokens[2]);
                 double payRate = Double.parseDouble(tokens[3]);
                 Employee emp = new Employee(empId,tokens[1],hours,payRate);
-                System.out.println("Employee Name: " + emp.getName() + ", Employee ID: " + emp.getEmployeeId() + ", Gross Pay: " + emp.getGrossPay());
+                System.out.println("Employee Name: " + emp.getName() + ", Employee ID: " + emp.getEmployeeId() + ", Gross Pay: $" + emp.getGrossPay());
 
             }
         } catch (IOException e) {
