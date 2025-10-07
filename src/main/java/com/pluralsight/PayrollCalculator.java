@@ -6,10 +6,9 @@ public class PayrollCalculator {
 
     public static void main(String[] args) {
 
-        String filename = "EmployeeData.txt";
+        String filename = "EmployeeData.txt"; //name of the file being read
 
-        // Use try-with-resources.
-        // FileNotFoundException might be thrown here by the FileReader constructor.
+        // Using try-with-resources.
         try(BufferedReader br =  new BufferedReader(new FileReader(filename))){
 
             String line;
@@ -22,9 +21,12 @@ public class PayrollCalculator {
                 System.out.println("Employee Name: " + emp.getName() + ", Employee ID: " + emp.getEmployeeId() + ", Gross Pay: $" + emp.getGrossPay());
 
             }
+        } catch (FileNotFoundException e) {
+            // Specific action for when the file isn't where we looked
+            System.err.println("ERROR: The file was not found at the specified path. Check your file name and location.");
         } catch (IOException e) {
-            System.out.println("Problem reading the file: " + e.getMessage());
-             e.printStackTrace();
+            // Catches all other I/O errors
+            System.err.println("A general I/O error occurred while reading the file: " + e.getMessage());
         }
     }
 }
