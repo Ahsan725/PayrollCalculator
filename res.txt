@@ -1,0 +1,5 @@
+Employee Name: Dana Wyatt, Employee ID: 10, Gross Pay: $656.25
+Employee Name: Ezra Aiden, Employee ID: 20, Gross Pay: $284.75
+Employee Name: Brittany Thibbs, Employee ID: 30, Gross Pay: $660.0
+Employee Name: Zephaniah Hughes, Employee ID: 40, Gross Pay: $20.0
+Employee Name: Ahsan Baseer, Employee ID: 50, Gross Pay: $590.0
