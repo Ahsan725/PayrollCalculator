@@ -4,30 +4,32 @@ import java.io.*;
 import java.util.Scanner;
 
 public class PayrollCalculator {
+    //declared some static variables
     static Scanner sc = new Scanner(System.in);
     static String outputFilename;
 
     public static void main(String[] args) {
-        String inputFilename;
-        int outputChoice = -1;
+        String inputFilename; //input file
+        int outputChoice; //output file
 
         System.out.println("What is the name of the file you want to read from?");
-        inputFilename = sc.nextLine();
+        inputFilename = sc.nextLine(); //get input file name from the user
 
         System.out.println("Where would you like the results?");
         System.out.println("""
                 (1) Print to Screen
                 (2) Save to File
                 """);
-        outputChoice = sc.nextInt();
+        outputChoice = sc.nextInt(); //Either print to screen or save to file
         sc.nextLine(); // consume the newline after nextInt()
 
-        boolean jsonFormat = false;
+        boolean jsonFormat = false; //initialize it as a false by default
         if (outputChoice == 2) {
-            jsonFormat = fileOptions();
+            jsonFormat = fileOptions(); //set it to true if user wants JSON format
         }
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder result = new StringBuilder(); //creates one result that can be either printed to
+        // screen or saved to file. This way there is no result accumulation twice.
 
         // Using try-with-resources.
         try (BufferedReader br = new BufferedReader(new FileReader(inputFilename))) {
@@ -35,9 +37,10 @@ public class PayrollCalculator {
 
             while ((line = br.readLine()) != null) {
                 var tokens = line.split("\\|");
-                int empId = Integer.parseInt(tokens[0]);
+                int empId = Integer.parseInt(tokens[0]); //parse variables that need to be parsed
                 double hours = Double.parseDouble(tokens[2]);
                 double payRate = Double.parseDouble(tokens[3]);
+                //no need to parse to name (tokens[1]) as it is already a string
 
                 Employee emp = new Employee(empId, tokens[1], hours, payRate);
 
